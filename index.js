@@ -1,7 +1,4 @@
 var household = [];
-var age;
-var smoker;
-var relationship;
 var form;
 var formNodes;
 var count = 1;
@@ -19,20 +16,20 @@ function init() {
 
 function addMember() {
 	var addButton = document.querySelector('button.add');
-	var ageError = document.querySelectorAll(".error")
+	var ageError = document.querySelectorAll(".error");
 	var qContainer;
 	var addFormLocation;
 
 	addButton.addEventListener("click", function() {
 		validateAge();
-		addRequired();
 		validateRelationship();
+		addRequired();
 
 		if (ageApproved && relApproved) {
 			formNodes = document.querySelectorAll("form")[0];
 			//find/create placement location for questions container
 			addFormLocation = formNodes.children[formNodes.children.length - 2];
-			//new questions div container
+			//questions div container with own classes
 			qContainer = document.createElement("div");
 			qContainer.className = "questions";
 			qContainer.className += " q-block-" + count;
@@ -165,7 +162,7 @@ function totalSmokers() {
 		household[i]["smoker"] = smoker;
 	}
 }
-
+//the remove button
 function createRemoveButton() {
 	var parentNode = document.querySelectorAll("form")[0];
 	var rLocation = parentNode.children[parentNode.children.length - 2];
